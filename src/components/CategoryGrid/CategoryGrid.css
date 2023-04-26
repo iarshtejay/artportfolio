@@ -1,0 +1,22 @@
+.CategoryGrid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 1rem;
+    align-items: center;
+    justify-items: center;
+}
+
+.CategoryGrid-item {
+    /* background: black; */
+    padding: 1rem;
+    font-family: "Millenia";
+    font-size: large;
+}
+
+CategoryGrid-item > CategoryGrid-link,CategoryGrid-link:hover,CategoryGrid-link:click, CategoryGrid-link:visited, CategoryGrid-link:-webkit-any-link{
+    border:none;
+    outline:none;
+    text-decoration:none;
+    color:inherit;
+    -webkit-tap-highlight-color: white;
+}

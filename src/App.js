@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./components/Header/Header";
+import CategoryGrid from "./components/CategoryGrid/CategoryGrid";
+import ArtworkGrid from "./components/ArtworkGrid/ArtworkGrid";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import categories from "./data/categories.json"
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <CategoryGrid />,
+  },
+  ...categories.map((category) => {
+    return { path: `${category.toLowerCase()}`, element: <ArtworkGrid /> };
+  }),
+]);
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <RouterProvider router={router} />
     </div>
   );
 }

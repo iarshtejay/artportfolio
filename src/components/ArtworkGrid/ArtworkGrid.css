@@ -1,0 +1,36 @@
+.ArtworkGrid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 1rem;
+    align-items: center;
+    justify-items: center;
+}
+
+.ArtworkGrid-item {
+    /* background: black; */
+    padding: 1rem;
+    font-family: "Millenia";
+    font-size: large;
+}
+
+ArtworkGrid-item > ArtworkGrid-link,ArtworkGrid-link:hover,ArtworkGrid-link:click, ArtworkGrid-link:visited, ArtworkGrid-link:-webkit-any-link{
+    border:none;
+    outline:none;
+    text-decoration:none;
+    color:inherit;
+    -webkit-tap-highlight-color: white;
+}
+
+.ArtworkGrid-spinner-container {
+    display: flex;
+    justify-content: center;
+}
+
+.ArtworkGrid-spinner {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    animation: round 1s linear infinite;
+    border-top: 5px solid rgb(3, 83, 89);
+    background: transparent;
+}
