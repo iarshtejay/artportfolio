@@ -1,36 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./ArtworkGrid.css";
 import airtableClient from "../../lib/airtable";
+import { useContext } from "react";
+import { ArtworksContext } from "../../contexts/ArtworksContext";
 
 const ArtworkGrid = () => {
   const currentPath = window.location.pathname;
-  const [artworks, setArtworks] = useState([]);
-  const [artworksLoading, setArtworksLoading] = useState(true);
-
-  useEffect(() => {
-    const onPageLoad = () => {
-      console.log(process.env.REACT_APP_AIRTABLE_API_TOKEN);
-      airtableClient
-        .get("/")
-        .then((res) => {
-          const records = res.data.records.map((record) => {
-            return {
-              id: record.id,
-              name: record.fields.name,
-              category: record.fields.category,
-              imageURL: record.fields.image[0].thumbnails.large.url,
-            };
-          });
-          setArtworks(records);
-          setArtworksLoading(false);
-        })
-        .catch((err) => {
-          setArtworksLoading(false);
-          console.log(err);
-        });
-    };
-    onPageLoad();
-  }, []);
+  const { artworks, artworksLoading } = useContext(ArtworksContext);
+  console.log("In Artwork Griddd")
 
   return artworksLoading ? (
     <div className="ArtworkGrid-spinner-container">
