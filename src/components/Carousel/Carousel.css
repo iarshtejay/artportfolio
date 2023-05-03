@@ -1,6 +1,9 @@
 .carousel {
-    min-height: 100vh;
+    width: 80%;
+    min-height: 60vh;
     display: flex;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .artwork {
@@ -14,4 +17,10 @@
 
 .artwork.open {
     flex: 5
+}
+
+.header {
+    font-family: "Millenia";
+    font-size: x-large;
+    text-align: center;
 }

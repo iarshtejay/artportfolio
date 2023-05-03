@@ -13,7 +13,12 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <CategoryGrid />,
+      element: (
+        <div>
+          <Carousel />
+          <CategoryGrid />
+        </div>
+      ),
     },
     {
       path: "/carousel",
@@ -38,6 +43,7 @@ function App() {
               name: record.fields.name,
               category: record.fields.category,
               imageURL: record.fields.image[0].thumbnails.large.url,
+              featured: record.fields.featured,
             };
           });
           console.log("Fetching from App");
