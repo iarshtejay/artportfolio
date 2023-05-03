@@ -6,7 +6,7 @@ export const Carousel = () => {
   const [artworkOpen, setArtworkOpen] = useState({
     0: false,
     1: false,
-    2: false,
+    2: true,
     3: false,
     4: false,
   });
