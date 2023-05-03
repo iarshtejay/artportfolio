@@ -20,12 +20,16 @@ function App() {
         </div>
       ),
     },
-    {
-      path: "/carousel",
-      element: <Carousel />,
-    },
     ...categories.map((category) => {
-      return { path: `${category.toLowerCase()}`, element: <ArtworkGrid /> };
+      return {
+        path: `/category/${category.toLowerCase()}`,
+        element: (
+          <div>
+            <CategoryGrid />
+            <ArtworkGrid />
+          </div>
+        ),
+      };
     }),
   ]);
   const [artworks, setArtworks] = useState([]);

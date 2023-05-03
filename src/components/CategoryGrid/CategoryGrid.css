@@ -15,6 +15,16 @@
     font-size: large;
 }
 
+.CategoryGrid-item-condensed {
+    /* background: black; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.5rem;
+    font-family: "Millenia";
+    font-size: large;
+}
+
 .CategoryGrid-item > .CategoryGrid-link,.CategoryGrid-link:hover,.CategoryGrid-link:click, .CategoryGrid-link:visited, .CategoryGrid-link:-webkit-any-link{
     border:none;
     outline:none;
@@ -37,6 +47,6 @@ a, a:hover, a:visited {
     height: 5em;
 }
 
-.CategoryGrid-icon .condensed {
-    height: 10em;
+.CategoryGrid-icon-condensed {
+    height: 1em;
 }
