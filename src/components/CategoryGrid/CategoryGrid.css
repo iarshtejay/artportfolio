@@ -1,22 +1,42 @@
 .CategoryGrid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-gap: 1rem;
-    align-items: center;
-    justify-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .CategoryGrid-item {
     /* background: black; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 1rem;
     font-family: "Millenia";
     font-size: large;
 }
 
-CategoryGrid-item > CategoryGrid-link,CategoryGrid-link:hover,CategoryGrid-link:click, CategoryGrid-link:visited, CategoryGrid-link:-webkit-any-link{
+.CategoryGrid-item > .CategoryGrid-link,.CategoryGrid-link:hover,.CategoryGrid-link:click, .CategoryGrid-link:visited, .CategoryGrid-link:-webkit-any-link{
     border:none;
     outline:none;
     text-decoration:none;
-    color:inherit;
+    color:red;
     -webkit-tap-highlight-color: white;
+}
+
+a, a:hover, a:visited {
+    text-decoration: none
+}
+
+.CategoryGrid-header {
+    font-family: "Millenia";
+    font-size: x-large;
+    text-align: center;
+}
+
+.CategoryGrid-icon {
+    height: 5em;
+}
+
+.CategoryGrid-icon .condensed {
+    height: 10em;
 }
