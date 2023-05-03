@@ -3,11 +3,11 @@ import "./ArtworkGrid.css";
 import airtableClient from "../../lib/airtable";
 import { useContext } from "react";
 import { ArtworksContext } from "../../contexts/ArtworksContext";
+import { Link } from "react-router-dom";
 
 const ArtworkGrid = () => {
   const currentPath = window.location.pathname;
   const { artworks, artworksLoading } = useContext(ArtworksContext);
-  console.log("In Artwork Griddd")
 
   return artworksLoading ? (
     <div className="ArtworkGrid-spinner-container">
@@ -21,12 +21,14 @@ const ArtworkGrid = () => {
         )
         .map((artwork) => {
           return (
-            <div className="ArtworkGrid-item">
-              <img src={artwork.thumbnailURL} width={"200em"} />
-              <p>{artwork.name}</p>
-              {/* TODO: Remove category later on*/}
-              <p>{artwork.category}</p>
-            </div>
+            <Link to={`/artwork/${artwork.id}`}>
+              <div className="ArtworkGrid-item">
+                <img src={artwork.thumbnailURL} width={"200em"} />
+                <p>{artwork.name}</p>
+                {/* TODO: Remove category later on*/}
+                <p>{artwork.category}</p>
+              </div>
+            </Link>
           );
         })}
     </div>
