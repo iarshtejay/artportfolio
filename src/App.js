@@ -46,11 +46,13 @@ function App() {
               id: record.id,
               name: record.fields.name,
               category: record.fields.category,
-              imageURL: record.fields.image[0].thumbnails.large.url,
+              thumbnailURL: record.fields.image[0].thumbnails.large.url,
               featured: record.fields.featured,
+              imageURL: record.fields.image[0].url,
             };
           });
           console.log("Fetching from App");
+          console.log(records);
           setArtworks(records);
           setArtworksLoading(false);
         })
