@@ -28,10 +28,10 @@ export const Carousel = () => {
               <div
                 className={`artwork ${artworkOpen[ind] ? "open" : ""}`}
                 style={{
-                  background: `url(${artwork.imageURL})`,
+                  background: `url(${artwork.thumbnailURL})`,
                   backgroundSize: "cover",
                 }}
-                src={artwork.imageURL}
+                src={artwork.thumbnailURL}
                 onClick={(event) => toggleArtworkExpand(ind)}
                 key={ind}
               />

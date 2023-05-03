@@ -22,7 +22,7 @@ const ArtworkGrid = () => {
         .map((artwork) => {
           return (
             <div className="ArtworkGrid-item">
-              <img src={artwork.imageURL} width={"200em"} />
+              <img src={artwork.thumbnailURL} width={"200em"} />
               <p>{artwork.name}</p>
               {/* TODO: Remove category later on*/}
               <p>{artwork.category}</p>
