@@ -8,6 +8,7 @@ import { Carousel } from "./components/Carousel/Carousel";
 import { ArtworksContext } from "./contexts/ArtworksContext";
 import airtableClient from "./lib/airtable";
 import { useState, useEffect } from "react";
+import Artwork from "./components/Artwork/Artwork";
 
 function App() {
   const router = createBrowserRouter([
@@ -17,6 +18,15 @@ function App() {
         <div>
           <Carousel />
           <CategoryGrid />
+        </div>
+      ),
+    },
+    {
+      path: "/artwork/:artworkId",
+      element: (
+        <div>
+          <CategoryGrid />
+          <Artwork />
         </div>
       ),
     },
