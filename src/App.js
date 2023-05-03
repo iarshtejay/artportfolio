@@ -30,17 +30,15 @@ function App() {
         </div>
       ),
     },
-    ...categories.map((category) => {
-      return {
-        path: `/category/${category.toLowerCase()}`,
-        element: (
-          <div>
-            <CategoryGrid />
-            <ArtworkGrid />
-          </div>
-        ),
-      };
-    }),
+    {
+      path: "/category/:categoryName",
+      element: (
+        <div>
+          <CategoryGrid />
+          <ArtworkGrid />
+        </div>
+      ),
+    },
   ]);
   const [artworks, setArtworks] = useState([]);
   const [artworksLoading, setArtworksLoading] = useState(true);

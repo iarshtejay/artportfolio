@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./ArtworkGrid.css";
-import airtableClient from "../../lib/airtable";
 import { useContext } from "react";
 import { ArtworksContext } from "../../contexts/ArtworksContext";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const ArtworkGrid = () => {
-  const currentPath = window.location.pathname;
+  const params = useParams();
+  const category = params.categoryName;
   const { artworks, artworksLoading } = useContext(ArtworksContext);
 
   return artworksLoading ? (
@@ -17,7 +17,7 @@ const ArtworkGrid = () => {
     <div className="ArtworkGrid-container">
       {artworks
         .filter((artwork_) =>
-          currentPath.includes(artwork_.category.toLocaleLowerCase())
+          category.includes(artwork_.category.toLocaleLowerCase())
         )
         .map((artwork) => {
           return (
