@@ -9,22 +9,20 @@ const CategoryGrid = () => {
 
   return (
     <div>
-      {!currentPath.includes("category") && (
-        <p className="CategoryGrid-header">Categories</p>
-      )}
+      {currentPath === "/" && <p className="CategoryGrid-header">Categories</p>}
       <div className="CategoryGrid-container">
         {categories.map((category) => {
           return (
             <Link to={`/category/${category.toLocaleLowerCase()}`}>
               <div
                 className={`CategoryGrid-item${
-                  currentPath.includes("category") ? "-condensed" : ""
+                  currentPath !== "/" ? "-condensed" : ""
                 }`}
               >
                 <img
                   src={icons[category.toLowerCase().replace("-", "")]}
                   className={`CategoryGrid-icon${
-                    currentPath.includes("category") ? "-condensed" : ""
+                    currentPath !== "/" ? "-condensed" : ""
                   }`}
                 />
                 <p className="CategoryGrid-link">{category}</p>
