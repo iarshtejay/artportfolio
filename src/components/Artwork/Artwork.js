@@ -18,13 +18,14 @@ const Artwork = () => {
     artworks
       .filter((result) => result.id === artworkId)
       .map((artwork) => {
-        console.log(artwork)
+        console.log(artwork);
         return (
-          <div className="Artwork-item">
-            <img src={artwork.thumbnailURL} width={"200em"} />
-            <p>{artwork.name}</p>
-            {/* TODO: Remove category later on*/}
-            <p>{artwork.id}</p>
+          <div className="Artwork-container">
+            <img src={artwork.imageURL} width={"600em"} />
+            <div className="Artwork-details-container">
+              <p className="Artwork-details-primary">{artwork.name}</p>
+              <p className="Artwork-details-secondary">{artwork.category}</p>
+            </div>
           </div>
         );
       })
