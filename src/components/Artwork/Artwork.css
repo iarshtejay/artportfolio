@@ -1,0 +1,36 @@
+.Artwork-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: auto;
+}
+
+.Artwork-item {
+    /* background: black; */
+    padding: 1rem;
+    font-family: "Millenia";
+    font-size: large;
+}
+
+Artwork-item > Artwork-link,Artwork-link:hover,Artwork-link:click, Artwork-link:visited, Artwork-link:-webkit-any-link{
+    border:none;
+    outline:none;
+    text-decoration:none;
+    color:inherit;
+    -webkit-tap-highlight-color: white;
+}
+
+.Artwork-spinner-container {
+    display: flex;
+    justify-content: center;
+}
+
+.Artwork-spinner {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    animation: round 1s linear infinite;
+    border-top: 5px solid rgb(3, 83, 89);
+    background: transparent;
+}
