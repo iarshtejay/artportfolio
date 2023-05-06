@@ -1,33 +1,35 @@
 import React from "react";
 import "./CategoryGrid.css";
 import categories from "../../data/categories.json";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import icons from "../../icons/icons";
 
-const CategoryGrid = () => {
-  const currentPath = window.location.pathname;
-
+const CategoryGrid = ({ isHome }) => {
   return (
     <div>
-      {currentPath === "/" && <p className="CategoryGrid-header">Categories</p>}
+      {isHome && <p className="CategoryGrid-header">Categories</p>}
       <div className="CategoryGrid-container">
         {categories.map((category) => {
           return (
-            <Link to={`/category/${category.toLocaleLowerCase()}`}>
-              <div
-                className={`CategoryGrid-item${
-                  currentPath !== "/" ? "-condensed" : ""
-                }`}
-              >
+            <NavLink
+              to={`/category/${category.toLocaleLowerCase()}`}
+              end
+              className={({ isActive }) => {
+                console.log("category", category.toLocaleLowerCase());
+                console.log("isActive", isActive);
+                return isActive
+                  ? "CategoryGrid-link-active"
+                  : "CategoryGrid-link";
+              }}
+            >
+              <div className={`CategoryGrid-item${isHome ? "" : "-condensed"}`}>
                 <img
                   src={icons[category.toLowerCase().replace("-", "")]}
-                  className={`CategoryGrid-icon${
-                    currentPath !== "/" ? "-condensed" : ""
-                  }`}
+                  className={`CategoryGrid-icon${isHome ? "" : "-condensed"}`}
                 />
-                <p className="CategoryGrid-link">{category}</p>
+                <p>{category}</p>
               </div>
-            </Link>
+            </NavLink>
           );
         })}
       </div>

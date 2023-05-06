@@ -25,13 +25,15 @@
     font-size: large;
 }
 
-.CategoryGrid-item > .CategoryGrid-link,.CategoryGrid-link:hover,.CategoryGrid-link:click, .CategoryGrid-link:visited, .CategoryGrid-link:-webkit-any-link{
-    border:none;
-    outline:none;
-    text-decoration:none;
-    color:red;
-    -webkit-tap-highlight-color: white;
+.CategoryGrid-link{
+    color:black;
 }
+
+.CategoryGrid-link-active{
+    color:red;
+}
+
+
 
 a, a:hover, a:visited {
     text-decoration: none
