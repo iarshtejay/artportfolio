@@ -16,8 +16,9 @@ function App() {
       path: "/",
       element: (
         <div>
+          <Header />
           <Carousel />
-          <CategoryGrid />
+          <CategoryGrid isHome={true}/>
         </div>
       ),
     },
@@ -25,6 +26,7 @@ function App() {
       path: "/artwork/:artworkId",
       element: (
         <div>
+          <Header />
           <CategoryGrid />
           <Artwork />
         </div>
@@ -34,6 +36,7 @@ function App() {
       path: "/category/:categoryName",
       element: (
         <div>
+          <Header />
           <CategoryGrid />
           <ArtworkGrid />
         </div>
@@ -75,7 +78,6 @@ function App() {
   return (
     <ArtworksContext.Provider value={{ artworks, artworksLoading }}>
       <div className="App">
-        <Header />
         <RouterProvider router={router} />
       </div>
     </ArtworksContext.Provider>
