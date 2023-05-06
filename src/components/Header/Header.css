@@ -1,8 +1,10 @@
 .Header {
     font-family: "Millenia";
     text-align: center;
+    padding: 1em;
 }
 
 .Header-text {
     font-size: 4em;
+    color: black;
 }

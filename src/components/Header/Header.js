@@ -1,13 +1,13 @@
 import React from "react";
 import "./Header.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
     <div className="Header">
-      <Link to="/" className="Header-text">
+      <NavLink to="/" className="Header-text">
         Arshdeep Singh
-      </Link>
+      </NavLink>
     </div>
   );
 };
