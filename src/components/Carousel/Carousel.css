@@ -9,15 +9,29 @@
 .artwork {
     width: 100%;
     flex: 1;
-    transition:
+    /* transition:
         font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
         flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
-        background 0.2s;
+        background 0.2s; */
+    transition: flex 1s ease 0s;
 }
+
 
 .artwork.open {
     flex: 5
 }
+
+.arrow {
+    display: flex;
+    flex-direction: column;
+    height: inherit;
+    justify-content: space-around;
+}
+
+.arrow-img {
+    height: 3em;
+}
+
 
 .header {
     font-family: "Millenia";
