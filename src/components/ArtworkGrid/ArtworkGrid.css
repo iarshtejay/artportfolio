@@ -23,7 +23,11 @@ ArtworkGrid-item > ArtworkGrid-link,ArtworkGrid-link:hover,ArtworkGrid-link:clic
 
 .ArtworkGrid-spinner-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    height: 60vh;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
 }
 
 .ArtworkGrid-spinner {

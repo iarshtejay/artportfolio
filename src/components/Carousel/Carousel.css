@@ -48,9 +48,18 @@
     transform: translateX(0.5em);
 }
 
-
 .header {
     font-family: "Millenia";
     font-size: x-large;
     text-align: center;
 }
+
+.spinner-container {
+    display: flex;
+    justify-content: space-around;
+    height: 60vh;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+}
+
