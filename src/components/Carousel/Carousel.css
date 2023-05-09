@@ -9,16 +9,22 @@
 .artwork {
     width: 100%;
     flex: 1;
-    /* transition:
-        font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+    transition:
         flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
-        background 0.2s; */
-    transition: flex 1s ease 0s;
+        background 0.2s,
+        filter .3s ease-in-out;
+    filter: grayscale(100%) blur(2px);
+}
+
+.artwork:hover {
+    filter: grayscale(40%);
+    cursor: pointer;
 }
 
 
 .artwork.open {
-    flex: 5
+    flex: 5;
+    filter: none;
 }
 
 .arrow {
@@ -26,10 +32,20 @@
     flex-direction: column;
     height: inherit;
     justify-content: space-around;
+    transition: .3s ease-in-out;
 }
 
 .arrow-img {
     height: 3em;
+    transition: 0.7s ease-out;
+}
+
+.arrow-img.left:hover {
+    transform: translateX(-0.5em);
+}
+
+.arrow-img.right:hover {
+    transform: translateX(0.5em);
 }
 
 

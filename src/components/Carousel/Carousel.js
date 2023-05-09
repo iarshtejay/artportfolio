@@ -20,7 +20,7 @@ export const Carousel = () => {
         <div className="arrow">
           <img
             src={icons.leftarrow}
-            className="arrow-img"
+            className="arrow-img left"
             onClick={(event) => changeArtworkOnDisplay(openArtwork, -1)}
           />
         </div>
@@ -41,7 +41,7 @@ export const Carousel = () => {
         <div className="arrow">
           <img
             src={icons.rightarrow}
-            className="arrow-img"
+            className="arrow-img right"
             onClick={(event) => changeArtworkOnDisplay(openArtwork, 1)}
           />
         </div>
