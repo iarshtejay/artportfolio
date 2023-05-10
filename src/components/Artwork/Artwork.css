@@ -1,38 +1,42 @@
 .Artwork-container {
+    text-decoration: none;
+    color: #444;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    margin: auto;
+    flex-direction: column;
+    min-height: 100%;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3em;
 }
 
 .Artwork-details-container {
+    padding: 1em;
+    flex: 1 1;
     display: flex;
-    flex-direction: column;
-    margin: 2em;
+    flex-direction: row;
     font-family: "Millenia";
-    justify-content: center;
+    justify-content: space-between;
+    background: white;
 }
 
 .Artwork-details-primary {
-    font-size: xx-large;
+    font-size: 1em;
+    color: #333;
 }
 
 .Artwork-details-secondary {
-    font-size: medium;
-    color: gray;
+    font-size: 1em;
+    color: #999;
+    letter-spacing: 0.2em;
 }
 
-.Artwork-spinner-container {
+.Artwork-spinner-container{
     display: flex;
-    justify-content: center;
-}
-
-.Artwork-spinner {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    animation: round 1s linear infinite;
-    border-top: 5px solid rgb(3, 83, 89);
-    background: transparent;
+    justify-content: space-around;
+    height: 60vh;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
 }

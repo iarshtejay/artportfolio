@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import "./Artwork.css";
 import { useContext } from "react";
 import { ArtworksContext } from "../../contexts/ArtworksContext";
+import { BarLoader } from "react-spinners";
 
 const Artwork = () => {
   const params = useParams();
@@ -12,7 +13,7 @@ const Artwork = () => {
 
   return artworksLoading ? (
     <div className="Artwork-spinner-container">
-      <div className="Artwork-spinner" />
+      <BarLoader loading={artworksLoading}/>
     </div>
   ) : (
     artworks
@@ -21,7 +22,7 @@ const Artwork = () => {
         console.log(artwork);
         return (
           <div className="Artwork-container">
-            <img src={artwork.imageURL} width={"600em"} />
+            <img src={artwork.imageURL} width={"800em"} />
             <div className="Artwork-details-container">
               <p className="Artwork-details-primary">{artwork.name}</p>
               <p className="Artwork-details-secondary">{artwork.category}</p>

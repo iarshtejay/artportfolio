@@ -38,6 +38,9 @@ export const Carousel = () => {
                   style={{
                     background: `url(${artwork.thumbnailURL})`,
                     backgroundSize: "cover",
+                    overflow: "hidden",
+                    marginLeft: "auto",
+                    marginRight: "auto"
                   }}
                   src={artwork.thumbnailURL}
                   onClick={(event) => changeArtworkOnDisplay(ind, 0)}
