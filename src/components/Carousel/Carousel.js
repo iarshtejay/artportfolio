@@ -22,37 +22,41 @@ export const Carousel = () => {
       {!artworksLoading && (
         <div>
           <p className="header">Featured Artworks</p>
-          <div className="carousel">
-            <div className="arrow">
-              <img
-                src={icons.leftarrow}
-                className="arrow-img left"
-                onClick={(event) => changeArtworkOnDisplay(openArtwork, -1)}
-              />
+          <div className="carousel-container">
+            <div className="carousel">
+              {artworks
+                .filter((artwork_) => artwork_.featured === true)
+                .map((artwork, ind) => (
+                  <div
+                    className={`artwork ${ind === openArtwork ? "open" : ""}`}
+                    style={{
+                      background: `url(${artwork.thumbnailURL})`,
+                      backgroundSize: "cover",
+                      overflow: "hidden",
+                      marginLeft: "auto",
+                      marginRight: "auto",
+                    }}
+                    src={artwork.thumbnailURL}
+                    onClick={(event) => changeArtworkOnDisplay(ind, 0)}
+                    key={ind}
+                  />
+                ))}
             </div>
-            {artworks
-              .filter((artwork_) => artwork_.featured === true)
-              .map((artwork, ind) => (
-                <div
-                  className={`artwork ${ind === openArtwork ? "open" : ""}`}
-                  style={{
-                    background: `url(${artwork.thumbnailURL})`,
-                    backgroundSize: "cover",
-                    overflow: "hidden",
-                    marginLeft: "auto",
-                    marginRight: "auto"
-                  }}
-                  src={artwork.thumbnailURL}
-                  onClick={(event) => changeArtworkOnDisplay(ind, 0)}
-                  key={ind}
+            <div className="arrow-container">
+              <div className="arrow-left">
+                <img
+                  src={icons.leftarrow}
+                  className="arrow-img left"
+                  onClick={(event) => changeArtworkOnDisplay(openArtwork, -1)}
                 />
-              ))}
-            <div className="arrow">
-              <img
-                src={icons.rightarrow}
-                className="arrow-img right"
-                onClick={(event) => changeArtworkOnDisplay(openArtwork, 1)}
-              />
+              </div>
+              <div className="arrow-right">
+                <img
+                  src={icons.rightarrow}
+                  className="arrow-img right"
+                  onClick={(event) => changeArtworkOnDisplay(openArtwork, 1)}
+                />
+              </div>
             </div>
           </div>
         </div>
