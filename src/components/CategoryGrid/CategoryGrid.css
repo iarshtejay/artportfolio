@@ -27,6 +27,7 @@
 
 .CategoryGrid-link{
     color:black;
+    cursor: pointer;
 }
 
 .CategoryGrid-link-active{
