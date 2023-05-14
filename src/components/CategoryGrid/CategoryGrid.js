@@ -15,8 +15,6 @@ const CategoryGrid = ({ isHome }) => {
               to={`/category/${category.toLocaleLowerCase()}`}
               end
               className={({ isActive }) => {
-                console.log("category", category.toLocaleLowerCase());
-                console.log("isActive", isActive);
                 return isActive
                   ? "CategoryGrid-link-active"
                   : "CategoryGrid-link";
@@ -27,7 +25,10 @@ const CategoryGrid = ({ isHome }) => {
                   src={icons[category.toLowerCase().replace("-", "")]}
                   className={`CategoryGrid-icon${isHome ? "" : "-condensed"}`}
                 />
-                <p>{category}</p>
+                <p>
+                <div className="CategoryGrid-link-highlight" />
+                  {category}
+                </p>
               </div>
             </NavLink>
           );

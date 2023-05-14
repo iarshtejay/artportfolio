@@ -7,4 +7,22 @@
 .Header-text {
     font-size: 4em;
     color: black;
+    transition: 
+        all 1s ease-in;
+    overflow: hidden;
+}
+
+.Header-highlight {
+  display: inline-block;
+  position: absolute;
+  z-index: -1;
+  background-color: aqua;
+  height: 3em; 
+  width: 0%;
+  transition: width 0.5s;
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.Header:hover .Header-highlight {
+    width: 29em; 
 }
