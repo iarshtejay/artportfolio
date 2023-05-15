@@ -15,17 +15,16 @@ const CategoryGrid = ({ isHome }) => {
       {isHome && <p className="CategoryGrid-header">Categories</p>}
       <div className="CategoryGrid-container">
         {!isHome && (
-          <div className="CategoryGrid-link" onClick={goBack}>
-            <div className={`CategoryGrid-item${isHome ? "" : "-condensed"}`}>
-              <img
-                src={icons["leftarrow"]}
-                className={`CategoryGrid-icon${isHome ? "" : "-condensed"}`}
-              />
-              <p>
-                <div className="CategoryGrid-link-highlight" />
-                Back
-              </p>
-            </div>
+          <div
+            className={`CategoryGrid-item-condensed`}
+            onClick={goBack}
+          >
+            <img
+              src={icons["leftarrow"]}
+              className={`CategoryGrid-icon-condensed`}
+              alt="back"
+              width={"30em"}
+            />
           </div>
         )}
         {categories.map((category) => {
