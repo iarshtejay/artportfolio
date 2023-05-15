@@ -13,16 +13,19 @@ const Artwork = () => {
 
   return artworksLoading ? (
     <div className="Artwork-spinner-container">
-      <BarLoader loading={artworksLoading}/>
+      <BarLoader loading={artworksLoading} />
     </div>
   ) : (
     artworks
       .filter((result) => result.id === artworkId)
       .map((artwork) => {
-        console.log(artwork);
         return (
           <div className="Artwork-container">
-            <img src={artwork.imageURL} width={"800em"} />
+            <div className="Aspect-ratio-box">
+              <div className="Aspect-ratio-box-inside">
+                <img src={artwork.imageURL} width={"800em"}/>
+              </div>
+            </div>
             <div className="Artwork-details-container">
               <p className="Artwork-details-primary">{artwork.name}</p>
               <p className="Artwork-details-secondary">{artwork.category}</p>

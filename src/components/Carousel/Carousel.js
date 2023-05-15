@@ -27,19 +27,34 @@ export const Carousel = () => {
               {artworks
                 .filter((artwork_) => artwork_.featured === true)
                 .map((artwork, ind) => (
-                  <div
-                    className={`artwork ${ind === openArtwork ? "open" : ""}`}
-                    style={{
-                      background: `url(${artwork.thumbnailURL})`,
-                      backgroundSize: "cover",
-                      overflow: "hidden",
-                      marginLeft: "auto",
-                      marginRight: "auto",
-                    }}
-                    src={artwork.thumbnailURL}
-                    onClick={(event) => changeArtworkOnDisplay(ind, 0)}
-                    key={ind}
-                  />
+                  // <div className="Aspect-ratio-box">
+                  //   <div className="Aspect-ratio-box-inside">
+                      <div
+                        className={`artwork ${
+                          ind === openArtwork ? "open" : ""
+                        }`}
+                        style={{
+                          background: `url(${artwork.thumbnailURL})`,
+                          backgroundSize: "cover",
+                          overflow: "hidden",
+                          marginLeft: "auto",
+                          marginRight: "auto",
+                        }}
+                        src={artwork.thumbnailURL}
+                        onClick={(event) => changeArtworkOnDisplay(ind, 0)}
+                        key={ind}
+                      >
+                        <div className="artwork-details">
+                          <div className="artwork-details-primary">
+                            {artwork.name}
+                          </div>
+                          <div className="artwork-details-secondary">
+                            {artwork.category}
+                          </div>
+                        </div>
+                      {/* </div>
+                    </div> */}
+                  </div>
                 ))}
             </div>
             <div className="arrow-container">

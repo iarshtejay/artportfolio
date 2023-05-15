@@ -25,7 +25,11 @@ const ArtworkGrid = () => {
               return (
                 <Link to={`/artwork/${artwork.id}`}>
                   <div className="ArtworkGrid-item">
-                    <img src={artwork.thumbnailURL} width={"300em"} />
+                    <div className="Aspect-ratio-box">
+                      <div className="Aspect-ratio-box-inside">
+                        <img src={artwork.thumbnailURL} width={"300em"} />
+                      </div>
+                    </div>
                     <div className="Artwork-details-container">
                       <p className="Artwork-details-primary">{artwork.name}</p>
                       <p className="Artwork-details-secondary">
