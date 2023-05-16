@@ -29,30 +29,28 @@ export const Carousel = () => {
                 .map((artwork, ind) => (
                   // <div className="Aspect-ratio-box">
                   //   <div className="Aspect-ratio-box-inside">
-                      <div
-                        className={`artwork ${
-                          ind === openArtwork ? "open" : ""
-                        }`}
-                        style={{
-                          background: `url(${artwork.thumbnailURL})`,
-                          backgroundSize: "cover",
-                          overflow: "hidden",
-                          marginLeft: "auto",
-                          marginRight: "auto",
-                        }}
-                        src={artwork.thumbnailURL}
-                        onClick={(event) => changeArtworkOnDisplay(ind, 0)}
-                        key={ind}
-                      >
-                        <div className="artwork-details">
-                          <div className="artwork-details-primary">
-                            {artwork.name}
-                          </div>
-                          <div className="artwork-details-secondary">
-                            {artwork.category}
-                          </div>
-                        </div>
-                      {/* </div>
+                  <div
+                    className={`artwork ${ind === openArtwork ? "open" : ""}`}
+                    style={{
+                      background: `url(${artwork.thumbnailURL})`,
+                      backgroundSize: "cover",
+                      overflow: "hidden",
+                      marginLeft: "auto",
+                      marginRight: "auto",
+                    }}
+                    src={artwork.thumbnailURL}
+                    onClick={(event) => changeArtworkOnDisplay(ind, 0)}
+                    key={ind}
+                  >
+                    <div className="artwork-details">
+                      <div className="artwork-details-primary">
+                        {artwork.name}
+                      </div>
+                      <div className="artwork-details-secondary">
+                        {artwork.category}
+                      </div>
+                    </div>
+                    {/* </div>
                     </div> */}
                   </div>
                 ))}
@@ -73,6 +71,15 @@ export const Carousel = () => {
                 />
               </div>
             </div>
+          </div>
+          <div className="indicator-container">
+            {[...Array(featuredCount)].map((e, i) => (
+              <div
+                className={`indicator${openArtwork === i ? "-active" : ""}`}
+                key={i}
+                onClick={(e) => changeArtworkOnDisplay(i, 0)}
+              />
+            ))}
           </div>
         </div>
       )}

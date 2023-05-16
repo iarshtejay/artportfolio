@@ -129,6 +129,35 @@
     opacity: 80%;
 }
 
+.indicator-container{
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    padding: 0.5em 0;
+}
+
+.indicator, .indicator-active {
+    height: 0.5em;
+    width: 0.5em;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 0.25em;
+    transition: 
+        background-color 0.6s ease-in-out,
+        transform  0.1s ease-in-out;
+    cursor: pointer;
+}
+
+.indicator-active {
+    background-color: black;
+}
+
+.indicator:hover, .indicator-active:hover {
+    transform: scale(1.5);
+}
 
 
 @media only screen and (max-width: 900px) {
@@ -167,6 +196,10 @@
     .artwork-details-secondary {
         font-size: 0.5em;
         padding-bottom: 0.5em;
+    }
+
+    .indicator-container {
+        display: none;
     }
   }
 
