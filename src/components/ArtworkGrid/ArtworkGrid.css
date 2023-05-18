@@ -5,6 +5,7 @@
     justify-content: flex-start;
     margin: auto;
     row-gap: 1em;
+    align-items: center;
 }
 
 .ArtworkGrid-item {
@@ -18,7 +19,7 @@
     flex-direction: column;
     min-height: 100%;
     width: fit-content;
-    margin-left: 1em;
+    margin: 0 1em;
     transition: 
         box-shadow 0.2s ease-in-out,
         transform .2s ease;

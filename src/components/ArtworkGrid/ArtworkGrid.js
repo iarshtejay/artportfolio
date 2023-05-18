@@ -27,7 +27,7 @@ const ArtworkGrid = () => {
                   <div className="ArtworkGrid-item">
                     <div className="Aspect-ratio-box">
                       <div className="Aspect-ratio-box-inside">
-                        <img src={artwork.thumbnailURL} width={"300em"} />
+                        <img src={artwork.thumbnailURL} height={"200em"} />
                       </div>
                     </div>
                     <div className="Artwork-details-container">
