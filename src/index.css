@@ -1,11 +1,12 @@
 body {
-  margin: 0;
+  margin: 0 5em;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Mill'
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url(https://img.freepik.com/free-photo/smooth-white-stucco-wall_1194-6983.jpg);
+  /* background-image: url(https://img.freepik.com/free-photo/smooth-white-stucco-wall_1194-6983.jpg); */
+  background-color: whitesmoke;
   width: '100vw';
   height: '100vh';
   background-position: 'center';

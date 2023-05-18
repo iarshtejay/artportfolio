@@ -15,10 +15,7 @@ const CategoryGrid = ({ isHome }) => {
       {isHome && <p className="CategoryGrid-header">Categories</p>}
       <div className="CategoryGrid-container">
         {!isHome && (
-          <div
-            className={`CategoryGrid-item-condensed`}
-            onClick={goBack}
-          >
+          <div className={`CategoryGrid-item-condensed`} onClick={goBack}>
             <img
               src={icons["leftarrow"]}
               className={`CategoryGrid-icon-condensed`}
