@@ -10,6 +10,7 @@
     transition: 
         all 1s ease-in;
     overflow: hidden;
+    text-align: center;
 }
 
 .Header-highlight {
