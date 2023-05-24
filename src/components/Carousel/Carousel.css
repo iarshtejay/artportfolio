@@ -159,6 +159,10 @@
 
 
 @media only screen and (max-width: 900px) {
+    .carousel{
+        min-height: 30vw;
+    }
+
     .arrow-left, .arrow-right {
         display: flex;
         flex-direction: row;
