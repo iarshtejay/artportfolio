@@ -5,6 +5,7 @@ import pencil from "./pencil.png";
 import watercolor from "./watercolor.png";
 import rightarrow from "./right-arrow.png"
 import leftarrow from "./left-arrow.png"
+import close from "./close.png"
 
-const icons = { acrylic, charcoal, mixmedia, pencil, watercolor, rightarrow, leftarrow };
+const icons = { acrylic, charcoal, mixmedia, pencil, watercolor, rightarrow, leftarrow, close };
 export default icons;
