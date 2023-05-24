@@ -9,6 +9,7 @@ const ArtworkGrid = () => {
   const params = useParams();
   const category = params.categoryName;
   const { artworks, artworksLoading } = useContext(ArtworksContext);
+  const rotationExtent = 0;
 
   return (
     <div>
@@ -16,30 +17,55 @@ const ArtworkGrid = () => {
         <BarLoader loading={artworksLoading} />
       </div>
       {!artworksLoading && (
-        <div className="ArtworkGrid-container">
-          {artworks
-            .filter((artwork_) =>
-              category.includes(artwork_.category.toLocaleLowerCase())
-            )
-            .map((artwork) => {
-              return (
-                <Link to={`/artwork/${artwork.id}`}>
-                  <div className="ArtworkGrid-item">
-                    <div className="Aspect-ratio-box">
-                      <div className="Aspect-ratio-box-inside">
-                        <img src={artwork.thumbnailURL} height={"200em"} />
-                      </div>
+        // <div className="ArtworkGrid-container">
+        //   {artworks
+        //     .filter((artwork_) =>
+        //       category.includes(artwork_.category.toLocaleLowerCase())
+        //     )
+        //     .map((artwork) => {
+        //       return (
+        //         <Link to={`/artwork/${artwork.id}`}>
+        //           {/* <div className="ArtworkGrid-item"> */}
+        //           <div className="Aspect-ratio-box">
+        //             <div className="Aspect-ratio-box-inside">
+        //               <img
+        //                 src={artwork.thumbnailURL}
+        //                 height={"200em"}
+        //                 className="Artwork-img"
+        //               />
+        //             </div>
+        //           </div>
+        //           {/* <div className="Artwork-details-primary">
+        //               {artwork.name}
+        //             </div> */}
+        //           {/* </div> */}
+        //         </Link>
+        //       );
+        //     })}
+        // </div>
+        <div className="wall-container">
+          <div className="wall">
+            {artworks
+              .filter((artwork_) =>
+                category.includes(artwork_.category.toLocaleLowerCase())
+              )
+              .map((artwork) => {
+                return (
+                  <Link to={`/artwork/${artwork.id}`}>
+                    <div
+                      className="picture-frame"
+                      style={{
+                        transform: `rotate(${
+                          Math.random() * rotationExtent - rotationExtent / 2
+                        }deg)`,
+                      }}
+                    >
+                      <img src={artwork.thumbnailURL} />
                     </div>
-                    <div className="Artwork-details-container">
-                      <p className="Artwork-details-primary">{artwork.name}</p>
-                      <p className="Artwork-details-secondary">
-                        {artwork.category}
-                      </p>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
+                  </Link>
+                );
+              })}
+          </div>
         </div>
       )}
     </div>
