@@ -8,31 +8,39 @@ import { BarLoader } from "react-spinners";
 const Artwork = () => {
   const params = useParams();
   const artworkId = params.artworkId;
-
   const { artworks, artworksLoading } = useContext(ArtworksContext);
+  const [artwork, setCurrArtwork] = useState({});
+  console.log("artworks--->", artworks);
+
+  useEffect(() => {
+    /*
+      if artworks is false or an empty array 
+        do nothing
+      else
+        find the correct artwork
+    */
+    if (artworks && artworks.length > 0) {
+      let resultantArtwork = artworks.find((result) => result.id === artworkId);
+      setCurrArtwork(resultantArtwork);
+    }
+  }, [artworks]);
 
   return artworksLoading ? (
     <div className="Artwork-spinner-container">
       <BarLoader loading={artworksLoading} />
     </div>
   ) : (
-    artworks
-      .filter((result) => result.id === artworkId)
-      .map((artwork) => {
-        return (
-          <div className="Artwork-container">
-            <div className="Aspect-ratio-box">
-              <div className="Aspect-ratio-box-inside">
-                <img src={artwork.imageURL} width={"800em"}/>
-              </div>
-            </div>
-            <div className="Artwork-details-container">
-              <p className="Artwork-details-primary">{artwork.name}</p>
-              <p className="Artwork-details-secondary">{artwork.category}</p>
-            </div>
-          </div>
-        );
-      })
+    <div>
+      <div className="Artwork-container">
+        <div className="aspect-ration-container">
+          <img src={artwork.imageURL} className="aspect-ratio-img" />
+        </div>
+      </div>
+      <div className="Artwork-details-flex">
+        <p className="Artwork-details-primary">{artwork.name}</p>
+        <p className="Artwork-details-secondary">{artwork.category}</p>
+      </div>
+    </div>
   );
 };
 
