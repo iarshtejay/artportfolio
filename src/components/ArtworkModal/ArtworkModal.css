@@ -1,0 +1,139 @@
+.Artwork-modal-container {
+    background: #333333eb;
+    z-index: 9999;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top:0;
+    left:0;
+}
+
+.Artwork-modal {
+
+
+}
+
+/* .Artwork-modal-details {
+    display: flex;
+    flex-direction: column;
+    font-family: "Millenia";
+    align-items: center;
+}
+
+.Artwork-modal-details-primary {
+    font-size: 3em;
+    color: #333;
+    margin: 0;
+}
+
+.Artwork-modal-details-secondary {
+    font-size: 1em;
+    color: #999;
+    margin: 0;
+} */
+
+
+.aspect-ratio-container {
+    position: relative;
+    width: 100%;
+    display: block;
+    padding-top: calc(591.44 / 1127.34 * 100%);
+    border-radius: 10px;
+    overflow: hidden;
+    max-height: 50vh;
+    margin-top: 5vh;
+    animation: 0.4s linear 0s 1 slideInFromCenter;
+}
+
+.aspect-ratio-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
+    transition: transform 0.5s;
+}
+
+/* .aspect-ration-container{}
+
+.aspect-ratio-img {
+    width: auto;
+    height: 100%;
+} */
+
+
+.Artwork-modal-details {
+    padding: 1em;
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+    font-family: "Millenia";
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.631), transparent);
+    /* opacity: 80%; */
+    /* visibility: hidden; */
+    transition: 
+        visibility 0.6s ease-in-out,
+        opacity 0.6s ease-in-out;
+    justify-content: flex-end;
+    height: fit-content; 
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    animation: 1s linear 0s 1 fadeIn;
+}
+
+.Artwork-modal-details-primary {
+    font-size: 3vw;
+    color: #ffff;
+    margin: 0 0;
+}
+
+.Artwork-modal-details-secondary {
+    font-size: 1vw;
+    color: #999;
+    padding-bottom: 1vw;
+    margin: 0 0;
+}
+
+/* .Artwork-modal-details:hover {
+    visibility: visible;
+    opacity: 80%;
+} */
+
+.Artwork-modal-close {
+    position: absolute;
+    right:0;
+    top:0;
+    object-fit: cover;
+    width: 5vh;
+    margin-top: 2vh;
+    margin-right: 2vw;
+    cursor: pointer;
+    filter: invert(1);
+}
+
+
+@keyframes slideInFromCenter {
+    0% {
+      /* transform: scale(0); */
+      opacity: 0;
+    }
+    100% {
+      /* transform: scale(1); */
+      opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+  

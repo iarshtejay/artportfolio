@@ -105,14 +105,12 @@
 
 
   .wall-container {
-    left: 0;
-    right: 0;
   }
 
   .wall {
-    column-count: auto;
+    column-count: 5;
     column-gap: 0px;
-    column-width: 22vw;
+    /* column-width: 22vw; */
     width: 1000px;
     margin: 0 auto;
     max-width: 100%;
@@ -126,6 +124,7 @@
     position: relative;
     z-index: 10;
     box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.5);
+    cursor: pointer;
   }
   .picture-frame:after {
     box-shadow: inset 1px 1px 10px rgba(0, 0, 0, 0.5);
