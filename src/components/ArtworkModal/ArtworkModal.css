@@ -1,11 +1,12 @@
 .Artwork-modal-container {
     background: #333333eb;
     z-index: 9999;
-    position: absolute;
+    position: fixed;
     height: 100vh;
     width: 100vw;
     top:0;
     left:0;
+    overflow: hidden;
 }
 
 .Artwork-modal {
