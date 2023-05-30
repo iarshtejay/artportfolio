@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { useState, useEffect } from "react";
 import "./ArtworkModal.css";
 import icons from "../../icons/icons";
 
@@ -7,14 +7,22 @@ const ArtworkModal = ({
   artworkModalDisplay,
   setArtworkModalDisplay,
 }) => {
-  const preloadIimage = (im_url) => {
-    let img = new Image();
-    img.src = im_url;
-    img.className = "aspect-ratio-img";
-    console.log(img);
-    return img;
+  const [img, setImg] = useState();
+  const [imgLoading, setImgLoading] = useState(true);
+
+  const fetchImage = async (imageURL) => {
+    setImgLoading(true);
+    const res = await fetch(imageURL);
+    const imageBlob = await res.blob();
+    const imageObjectURL = URL.createObjectURL(imageBlob);
+    setImg(imageObjectURL);
+    setImgLoading(false);
   };
-  console.log("In artwork modal");
+
+  useEffect(() => {
+    fetchImage(artwork.imageURL);
+  }, [artwork]);
+
   return (
     artworkModalDisplay && (
       <div
@@ -23,8 +31,9 @@ const ArtworkModal = ({
       >
         <div className="Artwork-modal">
           <div className="aspect-ratio-container">
-            {/* {preloadIimage(artwork.imageURL).map((element) => element)} */}
-            <img src={artwork.imageURL} className="aspect-ratio-img" />
+            {!imgLoading && img && (
+              <img src={img} className="aspect-ratio-img" />
+            )}
           </div>
         </div>
         <div className="Artwork-modal-details">

@@ -110,7 +110,7 @@
   .wall {
     column-count: 5;
     column-gap: 0px;
-    /* column-width: 22vw; */
+    column-width: 22vw;
     width: 1000px;
     margin: 0 auto;
     max-width: 100%;
