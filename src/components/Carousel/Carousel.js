@@ -32,7 +32,7 @@ export const Carousel = () => {
                   <div
                     className={`artwork ${ind === openArtwork ? "open" : ""}`}
                     style={{
-                      background: `url(${artwork.thumbnailURL})`,
+                      background: `url(${artwork.thumbnail.url})`,
                       backgroundSize: "cover",
                       overflow: "hidden",
                       marginLeft: "auto",
