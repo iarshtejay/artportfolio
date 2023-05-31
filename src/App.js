@@ -53,17 +53,16 @@ function App() {
         .get("/")
         .then((res) => {
           const records = res.data.records.map((record) => {
+            console.log(record)
             return {
               id: record.id,
               name: record.fields.name,
               category: record.fields.category,
-              thumbnailURL: record.fields.image[0].thumbnails.large.url,
+              thumbnail: record.fields.image[0].thumbnails.large,
               featured: record.fields.featured,
               imageURL: record.fields.image[0].url,
             };
           });
-          console.log("Fetching from App");
-          console.log(records);
           setArtworks(records);
           setArtworksLoading(false);
         })
