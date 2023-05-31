@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ArtworkGrid.css";
 import { useContext } from "react";
 import { ArtworksContext } from "../../contexts/ArtworksContext";
@@ -13,10 +13,28 @@ const ArtworkGrid = () => {
   const rotationExtent = 0;
   const [artworkModalDisplay, setArtworkModalDisplay] = useState(false);
   const [selectedArtwork, setSelectedArtwork] = useState({});
+  const [artworkThumbnails, setArtworkThumbnails] = useState({});
+
   const displayArtwork = (artwork) => {
     setSelectedArtwork(artwork);
     setArtworkModalDisplay(true);
   };
+
+  const fetchThumbnail = async (artwork) => {
+    const res = await fetch(artwork.thumbnail.url);
+    const imageBlob = await res.blob();
+    const imageObjectURL = URL.createObjectURL(imageBlob);
+    setArtworkThumbnails(prevThumbnails => {
+      return {
+        ...prevThumbnails,
+        [artwork.id]: imageObjectURL,
+      };
+    });
+  };
+
+  useEffect(() => {
+    artworks.forEach((artwork) => fetchThumbnail(artwork));
+  }, [artworks]);
 
   return (
     <div>
@@ -47,7 +65,11 @@ const ArtworkGrid = () => {
                     }}
                     onClick={(e) => displayArtwork(artwork)}
                   >
-                    <img src={artwork.thumbnailURL} />
+                    {artworkThumbnails[artwork?.id] ? (
+                      <img src={artworkThumbnails[artwork.id]} />
+                    ) : (
+                      <img width={artwork.thumbnail.width/2} height={artwork.thumbnail.height/2}/>
+                    )}
                   </div>
                   // </Link>
                 );
