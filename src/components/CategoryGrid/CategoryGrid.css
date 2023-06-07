@@ -3,6 +3,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    transition: all 0.3s ease-in;
 }
 
 .CategoryGrid-item, .CategoryGrid-item-condensed  {
@@ -12,6 +13,7 @@
     padding: 1rem;
     font-family: "Millenia";
     font-size: large;
+    transition: all 0.3s ease-in;
 }
 
 .CategoryGrid-item  {
@@ -20,11 +22,15 @@
     min-width: 7ch;
 }
 
-.CategoryGrid-item-condensed  {
+.CategoryGrid-item-condensed, .CategoryGrid-item-hamburger, .CategoryGrid-item-back  {
     flex-direction: row;
     padding: 0.5rem;
     cursor: pointer;
     min-width: 10ch;
+}
+
+.CategoryGrid-item-hamburger {
+    display:none;
 }
 
 
@@ -72,14 +78,74 @@ a, a:hover, a:visited {
     height: 1.5em;
 }
 
-@media only screen and (max-width: 886px) {
+.CategoryGrid-bar {
+    display: flex;
+    flex-direction: row;
+}
+
+.compact {
+    display: flex;
+    transition: all 0.3s ease-in;
+}
+
+.bar-item {
+    display: none;
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+}
+
+.break {
+}
+
+/*886px*/
+
+
+
+@media only screen and (max-width: 1143px) {
     .CategoryGrid-item:hover .CategoryGrid-link-highlight, .CategoryGrid-item-condensed:hover .CategoryGrid-link-highlight {
         width: 0%;
   }
   .CategoryGrid-item-condensed  {
-    flex-direction: column;
-    padding: 0.5rem;
-    cursor: pointer;
-    min-width: 10ch;
+        /* flex-direction: column; */
+        padding: 0.5rem;
+        cursor: pointer;
+        min-width: 10ch;
+        width: 100%;
+    }
+
+    .CategoryGrid-item-hamburger  {
+        display: flex;
+        flex-direction: row;
+        padding: 0.5rem;
+        cursor: pointer;
+        min-width: 10ch;
+    }
+
+    .CategoryGrid-container {
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+        padding: 0;
+        margin: 0;
+    }
+    .CategoryGrid-bar {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+
+    .compact {
+        display: none;
+    }
+    .break {
+        flex-basis: 100%;
+        height: 0;
+        /* width: 0; */
+    }
+    .bar-item {
+        display: block;
+    }
 }
-}
+
+

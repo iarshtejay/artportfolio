@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CategoryGrid.css";
 import categories from "../../data/categories.json";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -6,16 +6,45 @@ import icons from "../../icons/icons";
 
 const CategoryGrid = ({ isHome }) => {
   const navigate = useNavigate();
+  const [expandBar, setExpandBar] = useState(false);
   const goBack = () => {
     navigate(-1);
+    setExpandBar(false);
   };
+  const toggleNavBar = () => setExpandBar((prevState) => !prevState);
 
   return (
     <div>
       {isHome && <p className="CategoryGrid-header">Categories</p>}
-      <div className="CategoryGrid-container">
+      <nav className="CategoryGrid-bar hamburger">
         {!isHome && (
-          <div className={`CategoryGrid-item-condensed`} onClick={goBack}>
+          <div className={"bar-item"} onClick={goBack}>
+            <img
+              src={icons["leftarrow"]}
+              className={`CategoryGrid-icon-condensed`}
+              alt="back"
+              width={"30em"}
+            />
+          </div>
+        )}
+        {!isHome && (
+          <div className={"bar-item"} onClick={toggleNavBar}>
+            <img
+              src={icons["hamburger"]}
+              className={`CategoryGrid-icon-condensed`}
+              alt="menu"
+              width={"30em"}
+            />
+          </div>
+        )}
+      </nav>
+      <div
+        className={`CategoryGrid-container ${
+          expandBar /*&& !className_.endsWith("-active")*/ ? " compact" : ""
+        }`}
+      >
+        {!isHome && (
+          <div className={"CategoryGrid-item-condensed compact"} onClick={goBack}>
             <img
               src={icons["leftarrow"]}
               className={`CategoryGrid-icon-condensed`}
@@ -30,9 +59,15 @@ const CategoryGrid = ({ isHome }) => {
               to={`/category/${category.toLocaleLowerCase()}`}
               end
               className={({ isActive }) => {
-                return isActive
+                let className_ = isActive
                   ? "CategoryGrid-link-active"
                   : "CategoryGrid-link";
+                // className_ = `${className_}${
+                //   expandBar /*&& !className_.endsWith("-active")*/
+                //     ? " compact"
+                //     : ""
+                // }`;
+                return className_;
               }}
             >
               <div className={`CategoryGrid-item${isHome ? "" : "-condensed"}`}>
