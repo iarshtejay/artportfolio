@@ -24,11 +24,65 @@ const ArtworkGrid = () => {
     const res = await fetch(artwork.thumbnail.url);
     const imageBlob = await res.blob();
     const imageObjectURL = URL.createObjectURL(imageBlob);
-    setArtworkThumbnails(prevThumbnails => {
+    setArtworkThumbnails((prevThumbnails) => {
       return {
         ...prevThumbnails,
         [artwork.id]: imageObjectURL,
       };
+    });
+  };
+
+  const noOfColumns = 3;
+  const renderColumns = (noOfColumns) => {
+    const categoryArtworks = artworks.filter((artwork_) =>
+      category.includes(artwork_.category.toLocaleLowerCase())
+    );
+
+    return new Array(noOfColumns).fill(0).map((element, ind) => {
+      const reqdIndicies = new Array(categoryArtworks.length)
+        .fill(0)
+        .reduce((result, val, ind_) => {
+          if (ind_ % noOfColumns === ind) result.push(ind_);
+          console.log(result);
+          return result;
+        }, []);
+
+      return (
+        <div className="wall">
+          {reqdIndicies.map((artworkIndex) => {
+            return (
+              <div
+                className="picture-frame"
+                style={{
+                  transform: `rotate(${
+                    Math.random() * rotationExtent - rotationExtent / 2
+                  }deg)`,
+                }}
+                onClick={(e) =>
+                  displayArtwork(categoryArtworks.at(artworkIndex))
+                }
+              >
+                {artworkThumbnails[categoryArtworks.at(artworkIndex)?.id] ? (
+                  <img
+                    src={
+                      artworkThumbnails[categoryArtworks.at(artworkIndex).id]
+                    }
+                  />
+                ) : (
+                  <img
+                    width={
+                      categoryArtworks.at(artworkIndex).thumbnail.width / 2
+                    }
+                    height={
+                      categoryArtworks.at(artworkIndex).thumbnail.height / 2
+                    }
+                  />
+                )}
+              </div>
+            );
+          })}
+        </div>
+      );
     });
   };
 
@@ -47,35 +101,7 @@ const ArtworkGrid = () => {
         setArtworkModalDisplay={setArtworkModalDisplay}
       />
       {!artworksLoading && (
-        <div className="wall-container">
-          <div className="wall">
-            {artworks
-              .filter((artwork_) =>
-                category.includes(artwork_.category.toLocaleLowerCase())
-              )
-              .map((artwork) => {
-                return (
-                  // <Link to={`/artwork/${artwork.id}`}>
-                  <div
-                    className="picture-frame"
-                    style={{
-                      transform: `rotate(${
-                        Math.random() * rotationExtent - rotationExtent / 2
-                      }deg)`,
-                    }}
-                    onClick={(e) => displayArtwork(artwork)}
-                  >
-                    {artworkThumbnails[artwork?.id] ? (
-                      <img src={artworkThumbnails[artwork.id]} />
-                    ) : (
-                      <img width={artwork.thumbnail.width/2} height={artwork.thumbnail.height/2}/>
-                    )}
-                  </div>
-                  // </Link>
-                );
-              })}
-          </div>
-        </div>
+        <div className="wall-container">{renderColumns(noOfColumns)}</div>
       )}
     </div>
   );
