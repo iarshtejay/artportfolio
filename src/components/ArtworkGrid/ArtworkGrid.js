@@ -43,7 +43,6 @@ const ArtworkGrid = () => {
         .fill(0)
         .reduce((result, val, ind_) => {
           if (ind_ % noOfColumns === ind) result.push(ind_);
-          console.log(result);
           return result;
         }, []);
 

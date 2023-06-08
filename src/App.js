@@ -48,12 +48,11 @@ function App() {
 
   useEffect(() => {
     const onPageLoad = () => {
-      console.log(process.env.REACT_APP_AIRTABLE_API_TOKEN);
       airtableClient
         .get("/")
         .then((res) => {
           const records = res.data.records.map((record) => {
-            console.log(record)
+
             return {
               id: record.id,
               name: record.fields.name,

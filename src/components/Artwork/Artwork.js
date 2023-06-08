@@ -10,7 +10,6 @@ const Artwork = () => {
   const artworkId = params.artworkId;
   const { artworks, artworksLoading } = useContext(ArtworksContext);
   const [artwork, setCurrArtwork] = useState({});
-  console.log("artworks--->", artworks);
 
   useEffect(() => {
     /*
