@@ -5,6 +5,8 @@ import { ArtworksContext } from "../../contexts/ArtworksContext";
 import { Link, useParams } from "react-router-dom";
 import BarLoader from "react-spinners/BarLoader";
 import ArtworkModal from "../ArtworkModal/ArtworkModal";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const ArtworkGrid = () => {
   const params = useParams();
@@ -13,9 +15,11 @@ const ArtworkGrid = () => {
   const rotationExtent = 0;
   const [artworkModalDisplay, setArtworkModalDisplay] = useState(false);
   const [selectedArtwork, setSelectedArtwork] = useState({});
+  // const [prevArtwork, setPrevArtwork] = useState({});
+  // const [nextArtwork, setNextArtwork] = useState({});
   const [artworkThumbnails, setArtworkThumbnails] = useState({});
 
-  const displayArtwork = (artwork) => {
+  const displayArtwork = (artwork, ind) => {
     setSelectedArtwork(artwork);
     setArtworkModalDisplay(true);
   };
@@ -49,7 +53,7 @@ const ArtworkGrid = () => {
       return (
         <div className="wall">
           {reqdIndicies.map((artworkIndex) => {
-            return (
+            return artworkThumbnails[categoryArtworks.at(artworkIndex)?.id] ? (
               <div
                 className="picture-frame"
                 style={{
@@ -58,26 +62,28 @@ const ArtworkGrid = () => {
                   }deg)`,
                 }}
                 onClick={(e) =>
-                  displayArtwork(categoryArtworks.at(artworkIndex))
+                  displayArtwork(
+                    categoryArtworks.at(artworkIndex),
+                    artworkIndex
+                  )
                 }
               >
-                {artworkThumbnails[categoryArtworks.at(artworkIndex)?.id] ? (
-                  <img
-                    src={
-                      artworkThumbnails[categoryArtworks.at(artworkIndex).id]
-                    }
-                  />
-                ) : (
-                  <img
-                    width={
-                      categoryArtworks.at(artworkIndex).thumbnail.width / 2
-                    }
-                    height={
-                      categoryArtworks.at(artworkIndex).thumbnail.height / 2
-                    }
-                  />
-                )}
+                <img
+                  src={artworkThumbnails[categoryArtworks.at(artworkIndex).id]}
+                />
               </div>
+            ) : (
+              // <img
+              //   width={
+              //     categoryArtworks.at(artworkIndex).thumbnail.width / 2
+              //   }
+              //   height={
+              //     categoryArtworks.at(artworkIndex).thumbnail.height / 2
+              //   }
+              // />
+              <Skeleton
+                height={categoryArtworks.at(artworkIndex).thumbnail.height / 2}
+              />
             );
           })}
         </div>
@@ -86,19 +92,32 @@ const ArtworkGrid = () => {
   };
 
   useEffect(() => {
+    if (artworkModalDisplay) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "scroll";
+    }
+  }, [artworkModalDisplay]);
+
+  useEffect(() => {
     artworks.forEach((artwork) => fetchThumbnail(artwork));
   }, [artworks]);
+
+
 
   return (
     <div>
       <div className={artworksLoading ? "spinner-container" : ""}>
         <BarLoader loading={artworksLoading} />
       </div>
-      <ArtworkModal
-        artwork={selectedArtwork}
-        artworkModalDisplay={artworkModalDisplay}
-        setArtworkModalDisplay={setArtworkModalDisplay}
-      />
+      {artworkModalDisplay && (
+        <ArtworkModal
+          artwork={selectedArtwork}
+          category={category}
+          setSelectedArtwork={setSelectedArtwork}
+          setArtworkModalDisplay={setArtworkModalDisplay}
+        />
+      )}
       {!artworksLoading && (
         <div className="wall-container">{renderColumns(noOfColumns)}</div>
       )}

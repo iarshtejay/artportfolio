@@ -6,10 +6,10 @@ import icons from "../../icons/icons";
 
 const CategoryGrid = ({ isHome }) => {
   const navigate = useNavigate();
-  const [expandBar, setExpandBar] = useState(false);
+  const [expandBar, setExpandBar] = useState(true);
   const goBack = () => {
     navigate(-1);
-    setExpandBar(false);
+    setExpandBar(true);
   };
   const toggleNavBar = () => setExpandBar((prevState) => !prevState);
 
@@ -40,7 +40,7 @@ const CategoryGrid = ({ isHome }) => {
       </nav>
       <div
         className={`CategoryGrid-container ${
-          expandBar /*&& !className_.endsWith("-active")*/ ? " compact" : ""
+          expandBar && !isHome /*&& !className_.endsWith("-active")*/ ? " compact" : ""
         }`}
       >
         {!isHome && (
@@ -62,11 +62,6 @@ const CategoryGrid = ({ isHome }) => {
                 let className_ = isActive
                   ? "CategoryGrid-link-active"
                   : "CategoryGrid-link";
-                // className_ = `${className_}${
-                //   expandBar /*&& !className_.endsWith("-active")*/
-                //     ? " compact"
-                //     : ""
-                // }`;
                 return className_;
               }}
             >

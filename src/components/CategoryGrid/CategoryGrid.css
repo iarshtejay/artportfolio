@@ -101,7 +101,7 @@ a, a:hover, a:visited {
 
 
 
-@media only screen and (max-width: 1143px) {
+@media only screen and (max-width: 1300px) {
     .CategoryGrid-item:hover .CategoryGrid-link-highlight, .CategoryGrid-item-condensed:hover .CategoryGrid-link-highlight {
         width: 0%;
   }

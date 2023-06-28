@@ -1,11 +1,22 @@
 .Header {
-    font-family: "Millenia";
     text-align: center;
-    padding: 1em;
+    width: max-content;
+    margin: auto;
 }
 
 .Header-text {
+    font-family: "Millenia";
     font-size: 6em;
+    color: black;
+    transition: 
+        transform 1s ease-in;
+    overflow: hidden;
+    text-align: center;
+}
+
+.Header-text-punjabi {
+    font-family: "Gurmukhi";
+    font-size: 7em;
     color: black;
     transition: 
         transform 1s ease-in;
@@ -18,21 +29,22 @@
   position: absolute;
   z-index: -1;
   background-color: #98B4D4;
-  height: 6em; 
+  height: 8em; 
+  top: 3em;
   width: 0%;
   transition: width 0.5s;
   transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .Header:hover .Header-highlight {
-    width: 44em; 
+    width: 27em; 
 }
 
 @media only screen and (max-width: 1048px) {
     .Header:hover .Header-highlight {
         width: 0; 
     }
-    .Header-text {
+    .Header-text, .Header-text-punjabi {
         font-size: 10vw;
     }
 }

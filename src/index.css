@@ -1,5 +1,5 @@
 body {
-  margin: 2em 10em;
+  margin: 0em 10em 2em 10em;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Mill'
     sans-serif;
@@ -23,6 +23,12 @@ code {
   font-family: "Millenia";
   src: local("Millenia"),
    url("./fonts/Millenia.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Gurmukhi";
+  src: local("Gurmukhi"),
+   url("./fonts/Gurmukhi.ttf") format("truetype");
 }
 
 @media only screen and (max-width: 886px) {

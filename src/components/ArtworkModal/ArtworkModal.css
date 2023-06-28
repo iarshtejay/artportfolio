@@ -55,8 +55,6 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-    /* object-position: center center; */
-    /* transition: transform 0.5s; */
     animation: 0.4s linear 0s 1 fadeIn;
 }
 
@@ -103,11 +101,6 @@
     margin: 0 0;
 }
 
-/* .Artwork-modal-details:hover {
-    visibility: visible;
-    opacity: 80%;
-} */
-
 .Artwork-modal-close {
     position: absolute;
     right:0;
@@ -131,8 +124,28 @@
 
 @media only screen and (max-width: 900px) {
     .aspect-ratio-container {
-        max-height: 80vh;
-        max-width: 80vw;
+        position: unset;
+        width: unset;
+        display: unset;
+        padding-top: unset;
+        border-radius: unset;
+        overflow: unset;
+        max-height: unset;
+        left: unset;
+        top: unset;
+        transform: unset;
+    }
+
+    .aspect-ratio-img {
+        position: absolute;
+        margin-left: 2.5%;
+        margin-top: 2.5%;
+        /* width: 100%;
+        height: 100%; */
+        object-fit: contain; 
+        max-height: 95%;
+        max-width: 95%;
+        animation: 0.4s linear 0s 1 fadeIn;
     }
 
     .Artwork-modal-details{

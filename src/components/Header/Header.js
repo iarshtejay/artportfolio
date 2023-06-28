@@ -5,10 +5,13 @@ import { Link, NavLink } from "react-router-dom";
 const Header = () => {
   return (
     <div className="Header">
-      <div className="Header-highlight" />
-      <NavLink to="/" className="Header-text">
-        Arshdeep Singh
-      </NavLink>
+      <div>
+        <NavLink to="/">
+          <div className="Header-highlight" />
+          <span className="Header-text">Arsh   </span>
+          <span className="Header-text-punjabi">ਅਰਸ਼</span>
+        </NavLink>
+      </div>
     </div>
   );
 };

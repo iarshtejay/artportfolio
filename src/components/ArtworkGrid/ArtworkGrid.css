@@ -167,12 +167,14 @@
     align-items: start;
     display: grid;
     grid-template-columns: repeat(3,minmax(0,1fr));
+    animation: 1s linear 0s 1 fadeIn;
 }
 
 .wall {
     display: grid;
     grid-template-columns: minmax(0,1fr);
     grid-gap: 20px;
+    animation: 1s linear 0s 1 fadeIn;
 }
 
 @media only screen and (max-width: 900px) {

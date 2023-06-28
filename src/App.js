@@ -44,7 +44,7 @@ function App() {
     },
   ]);
   const [artworks, setArtworks] = useState([]);
-  const [artworksLoading, setArtworksLoading] = useState(true);
+  const [artworksLoading, setArtworksLoading] = useState(false);
 
   useEffect(() => {
     const onPageLoad = () => {
