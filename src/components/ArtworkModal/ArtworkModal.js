@@ -1,17 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./ArtworkModal.css";
 import icons from "../../icons/icons";
-import { ArtworksContext } from "../../contexts/ArtworksContext";
 
 const ArtworkModal = ({
   artwork,
-  category,
-  setSelectedArtwork,
   setArtworkModalDisplay,
 }) => {
   const [img, setImg] = useState();
   const [imgLoading, setImgLoading] = useState(true);
-  const { artworks, artworksLoading } = useContext(ArtworksContext);
 
   const fetchImage = async (imageURL) => {
     setImgLoading(true);
@@ -22,37 +18,12 @@ const ArtworkModal = ({
     setImgLoading(false);
   };
 
-  const handleKeyboardNav = (event) => {
-    console.log(event);
-  };
-
   useEffect(() => {
     fetchImage(artwork.imageURL);
   }, [artwork]);
 
   const navigateArtworks = (event) => {
-    const categoryArtworks = artworks.filter((artwork_) =>
-      category.includes(artwork_.category.toLocaleLowerCase())
-    );
-    const selectedInd = categoryArtworks.findIndex((art_) => {
-      console.log("finding new index");
-      console.log("selected artwork-->", artwork)
-      return art_.id === artwork.id;
-    });
-    console.log("Selected Index-->", selectedInd);
-    console.log(`Key pressed: ${event.key}`);
     if (event.key === "Escape") setArtworkModalDisplay(false);
-    if (event.key === "ArrowLeft") {
-      const updatedInd =
-        (categoryArtworks.length + selectedInd - 1) % categoryArtworks.length;
-      setSelectedArtwork(categoryArtworks.at(updatedInd));
-    }
-    if (event.key === "ArrowRight") {
-      const updatedInd =
-        (categoryArtworks.length + selectedInd + 1) % categoryArtworks.length;
-      setSelectedArtwork(categoryArtworks.at(updatedInd));
-    }
-
   }
 
   useEffect(() => {

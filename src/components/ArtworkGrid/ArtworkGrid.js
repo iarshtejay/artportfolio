@@ -15,8 +15,6 @@ const ArtworkGrid = () => {
   const rotationExtent = 0;
   const [artworkModalDisplay, setArtworkModalDisplay] = useState(false);
   const [selectedArtwork, setSelectedArtwork] = useState({});
-  // const [prevArtwork, setPrevArtwork] = useState({});
-  // const [nextArtwork, setNextArtwork] = useState({});
   const [artworkThumbnails, setArtworkThumbnails] = useState({});
 
   const displayArtwork = (artwork, ind) => {
@@ -113,8 +111,6 @@ const ArtworkGrid = () => {
       {artworkModalDisplay && (
         <ArtworkModal
           artwork={selectedArtwork}
-          category={category}
-          setSelectedArtwork={setSelectedArtwork}
           setArtworkModalDisplay={setArtworkModalDisplay}
         />
       )}
