@@ -12,72 +12,105 @@ const CategoryGrid = ({ isHome }) => {
     setExpandBar(true);
   };
   const toggleNavBar = () => setExpandBar((prevState) => !prevState);
+  const renderCategories = () =>
+    categories.map((category) => {
+      return (
+        <NavLink
+          to={`/category/${category.toLocaleLowerCase()}`}
+          end
+          className={({ isActive }) => {
+            let className_ = isActive
+              ? "CategoryGrid-link-active"
+              : "CategoryGrid-link";
+            return className_;
+          }}
+          tabIndex={0}
+          role="Button"
+          aria-label={`Visit ${category} category`}
+        >
+          <div
+            className={`CategoryGrid-item${isHome ? "" : "-condensed"}`}
+            alt=""
+          >
+            <img
+              src={icons[category.toLowerCase().replace("-", "")]}
+              className={`CategoryGrid-icon${isHome ? "" : "-condensed"}`}
+              alt=""
+            />
+            <p>
+              <div className="CategoryGrid-link-highlight" alt="" />
+              {category}
+            </p>
+          </div>
+        </NavLink>
+      );
+    });
 
   return (
     <div>
       {isHome && <p className="CategoryGrid-header">Categories</p>}
-      <nav className="CategoryGrid-bar hamburger">
-        {!isHome && (
-          <div className={"bar-item"} onClick={goBack}>
+      {/* Back Icon and Hamburger Icon */}
+      {!isHome && (
+        <nav className="CategoryGrid-bar hamburger">
+          <div
+            className={"bar-item"}
+            onClick={goBack}
+            onKeyDown={e => e.key === "Enter" ? goBack() : null}
+            tabIndex={0}
+            role="Button"
+            aria-label="Go to previous page"
+          >
             <img
               src={icons["leftarrow"]}
               className={`CategoryGrid-icon-condensed`}
-              alt="back"
+              alt=""
               width={"30em"}
             />
           </div>
-        )}
-        {!isHome && (
-          <div className={"bar-item"} onClick={toggleNavBar}>
+          <div
+            className={"bar-item"}
+            onClick={toggleNavBar}
+            onKeyDown={e => e.key === "Enter" ? toggleNavBar() : null}
+            tabIndex={0}
+            role="Button"
+            aria-label="Go to previous page"
+          >
             <img
               src={icons["hamburger"]}
               className={`CategoryGrid-icon-condensed`}
-              alt="menu"
+              alt=""
               width={"30em"}
             />
           </div>
-        )}
-      </nav>
+        </nav>
+      )}
+
       <div
         className={`CategoryGrid-container ${
-          expandBar && !isHome /*&& !className_.endsWith("-active")*/ ? " compact" : ""
+          expandBar && !isHome /*&& !className_.endsWith("-active")*/
+            ? " compact"
+            : ""
         }`}
       >
+        {/* Back button nav bar wide screen*/}
         {!isHome && (
-          <div className={"CategoryGrid-item-condensed compact"} onClick={goBack}>
+          <div
+            className={"CategoryGrid-item-condensed compact"}
+            onClick={goBack}
+            onKeyDown={e => e.key === "Enter" ? goBack() : null}
+            tabIndex={0}
+            role="Button"
+            aria-label="Go to previous page"
+          >
             <img
               src={icons["leftarrow"]}
               className={`CategoryGrid-icon-condensed`}
-              alt="back"
+              alt=""
               width={"30em"}
             />
           </div>
         )}
-        {categories.map((category) => {
-          return (
-            <NavLink
-              to={`/category/${category.toLocaleLowerCase()}`}
-              end
-              className={({ isActive }) => {
-                let className_ = isActive
-                  ? "CategoryGrid-link-active"
-                  : "CategoryGrid-link";
-                return className_;
-              }}
-            >
-              <div className={`CategoryGrid-item${isHome ? "" : "-condensed"}`}>
-                <img
-                  src={icons[category.toLowerCase().replace("-", "")]}
-                  className={`CategoryGrid-icon${isHome ? "" : "-condensed"}`}
-                />
-                <p>
-                  <div className="CategoryGrid-link-highlight" />
-                  {category}
-                </p>
-              </div>
-            </NavLink>
-          );
-        })}
+        {renderCategories()}
       </div>
     </div>
   );
