@@ -9,11 +9,11 @@ export const Carousel = () => {
   const [openArtwork, setOpenArtwork] = useState(2);
   const { artworks, artworksLoading } = useContext(ArtworksContext);
 
-  const changeArtworkOnDisplay = (key, delta) => {
+  const handleOpenArtwork = (key, delta) => {
     setOpenArtwork((featuredCount + key + delta) % featuredCount);
   };
 
-  const carouselArtworks = () => {
+  const renderArtworks = () => {
     return artworks
       .filter((artwork_) => artwork_.featured === true)
       .map((artwork, ind) => (
@@ -27,8 +27,9 @@ export const Carousel = () => {
             marginRight: "auto",
           }}
           src={artwork.thumbnailURL}
-          onClick={(event) => changeArtworkOnDisplay(ind, 0)}
+          onClick={(event) => handleOpenArtwork(ind, 0)}
           key={ind}
+          // TODO: ADD aria-label, alt
         >
           <div className="artwork-details">
             <div className="artwork-details-primary">{artwork.name}</div>
@@ -38,31 +39,43 @@ export const Carousel = () => {
       ));
   };
 
-  const navigationArrows = () => {
+  const renderNavArrows = () => {
     return [
-      <div className="arrow-left">
-        <img
-          src={icons.leftarrow}
-          className="arrow-img left"
-          onClick={(event) => changeArtworkOnDisplay(openArtwork, -1)}
-        />
+      <div
+        className="arrow-left"
+        onClick={(event) => handleOpenArtwork(openArtwork, -1)}
+        onKeyDown={(event) =>
+          event.key === "Enter" ? handleOpenArtwork(openArtwork, -1) : null
+        }
+        aria-label="Go To Previous Image"
+        role="Button"
+        tabIndex={0}
+      >
+        <img src={icons.leftarrow} className="arrow-img left" alt="" />
       </div>,
-      <div className="arrow-right">
-        <img
-          src={icons.rightarrow}
-          className="arrow-img right"
-          onClick={(event) => changeArtworkOnDisplay(openArtwork, 1)}
-        />
+      <div
+        className="arrow-right"
+        onClick={(event) => handleOpenArtwork(openArtwork, 1)}
+        onKeyDown={(event) =>
+          event.key === "Enter" ? handleOpenArtwork(openArtwork, 1) : null
+        }
+        aria-label="Go To Next Image"
+        role="Button"
+        tabIndex={0}
+      >
+        <img src={icons.rightarrow} className="arrow-img right" alt="" />
       </div>,
     ];
   };
 
-  const paginate = () => {
+  const renderPagination = () => {
     return [...Array(featuredCount)].map((e, i) => (
       <div
         className={`indicator${openArtwork === i ? "-active" : ""}`}
         key={i}
-        onClick={(e) => changeArtworkOnDisplay(i, 0)}
+        onClick={(e) => handleOpenArtwork(i, 0)}
+        aria-label="Click to change active image"
+        role="Button"
       />
     ));
   };
@@ -76,10 +89,10 @@ export const Carousel = () => {
         <div>
           <p className="header">Featured Artworks</p>
           <div className="carousel-container">
-            <div className="carousel">{carouselArtworks()}</div>
-            <div className="arrow-container">{navigationArrows()}</div>
+            <div className="carousel">{renderArtworks()}</div>
+            <div className="arrow-container">{renderNavArrows()}</div>
           </div>
-          <div className="indicator-container">{paginate()}</div>
+          <div className="indicator-container">{renderPagination()}</div>
         </div>
       )}
     </div>
