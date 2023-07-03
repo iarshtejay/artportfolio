@@ -7,8 +7,8 @@ const Header = () => {
     <div className="Header">
       <div>
         <NavLink to="/">
-          <div className="Header-highlight" />
-          <span className="Header-text">Arsh   </span>
+          <div className="Header-hover" />
+          <span className="Header-text">{"Arsh   "}</span>
           <span className="Header-text-punjabi">ਅਰਸ਼</span>
         </NavLink>
       </div>

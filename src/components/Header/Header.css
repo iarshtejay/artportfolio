@@ -24,7 +24,7 @@
     text-align: center;
 }
 
-.Header-highlight {
+.Header-hover {
   display: inline-block;
   position: absolute;
   z-index: -1;
@@ -36,7 +36,7 @@
   transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.Header:hover .Header-highlight {
+.Header:hover .Header-hover {
     width: 27em; 
 }
 
