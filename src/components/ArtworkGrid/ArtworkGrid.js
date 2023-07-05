@@ -17,9 +17,14 @@ const ArtworkGrid = () => {
   const [selectedArtwork, setSelectedArtwork] = useState({});
   const [artworkThumbnails, setArtworkThumbnails] = useState({});
 
-  const displayArtwork = (artwork, ind) => {
-    setSelectedArtwork(artwork);
-    setArtworkModalDisplay(true);
+  const toggleArtwork = (artwork, ind) => {
+    if (artwork) {
+      setSelectedArtwork(artwork);
+      setArtworkModalDisplay(true);
+    }else {
+      setSelectedArtwork({});
+      setArtworkModalDisplay(false);
+    }
   };
 
   const fetchThumbnail = async (artwork) => {
@@ -60,25 +65,31 @@ const ArtworkGrid = () => {
                   }deg)`,
                 }}
                 onClick={(e) =>
-                  displayArtwork(
+                  toggleArtwork(
                     categoryArtworks.at(artworkIndex),
                     artworkIndex
                   )
                 }
+                onKeyDown={(e) =>
+                  e.key === "Enter"
+                    ? toggleArtwork(
+                        categoryArtworks.at(artworkIndex),
+                        artworkIndex
+                      )
+                    : null
+                }
+                tabIndex={0}
+                role="Button"
+                aria-label={`Open artwork named ${
+                  categoryArtworks.at(artworkIndex)?.name
+                }`}
               >
                 <img
                   src={artworkThumbnails[categoryArtworks.at(artworkIndex).id]}
+                  alt=""
                 />
               </div>
             ) : (
-              // <img
-              //   width={
-              //     categoryArtworks.at(artworkIndex).thumbnail.width / 2
-              //   }
-              //   height={
-              //     categoryArtworks.at(artworkIndex).thumbnail.height / 2
-              //   }
-              // />
               <Skeleton
                 height={categoryArtworks.at(artworkIndex).thumbnail.height / 2}
               />
@@ -88,6 +99,7 @@ const ArtworkGrid = () => {
       );
     });
   };
+
 
   useEffect(() => {
     if (artworkModalDisplay) {
@@ -101,8 +113,6 @@ const ArtworkGrid = () => {
     artworks.forEach((artwork) => fetchThumbnail(artwork));
   }, [artworks]);
 
-
-
   return (
     <div>
       <div className={artworksLoading ? "spinner-container" : ""}>
@@ -111,7 +121,7 @@ const ArtworkGrid = () => {
       {artworkModalDisplay && (
         <ArtworkModal
           artwork={selectedArtwork}
-          setArtworkModalDisplay={setArtworkModalDisplay}
+          toggleArtwork={toggleArtwork}
         />
       )}
       {!artworksLoading && (

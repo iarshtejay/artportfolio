@@ -2,10 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import "./ArtworkModal.css";
 import icons from "../../icons/icons";
 
-const ArtworkModal = ({
-  artwork,
-  setArtworkModalDisplay,
-}) => {
+const ArtworkModal = ({ artwork, toggleArtwork }) => {
   const [img, setImg] = useState();
   const [imgLoading, setImgLoading] = useState(true);
 
@@ -23,22 +20,19 @@ const ArtworkModal = ({
   }, [artwork]);
 
   const navigateArtworks = (event) => {
-    if (event.key === "Escape") setArtworkModalDisplay(false);
-  }
+    if (event.key === "Escape") toggleArtwork();
+  };
 
   useEffect(() => {
-    document.addEventListener("keydown", event => navigateArtworks(event));
+    document.addEventListener("keydown", (event) => navigateArtworks(event));
     // Runs on component un-mount
     return () => {
-      document.removeEventListener("keydown", event => navigateArtworks(event));
+      document.removeEventListener("keydown", navigateArtworks);
     };
   }, []);
 
   return (
-    <div
-      className="Artwork-modal-container"
-      onClick={(e) => setArtworkModalDisplay(false)}
-    >
+    <div className="Artwork-modal-container" onClick={toggleArtwork}>
       <div className="Artwork-modal">
         <div className="aspect-ratio-container">
           {!imgLoading && img && <img src={img} className="aspect-ratio-img" />}
@@ -51,8 +45,12 @@ const ArtworkModal = ({
       <img
         className="Artwork-modal-close"
         src={icons.close}
-        onClick={(e) => setArtworkModalDisplay(false)}
-        alt="close"
+        onClick={toggleArtwork}
+        onKeyDown={(e) => (e.key === "Enter" ? toggleArtwork() : null)}
+        aria-label="Close the modal"
+        tabIndex={1}
+        role="Button"
+        alt=""
       />
     </div>
   );

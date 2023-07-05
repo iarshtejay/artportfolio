@@ -29,7 +29,6 @@ export const Carousel = () => {
           src={artwork.thumbnailURL}
           onClick={(event) => handleOpenArtwork(ind, 0)}
           key={ind}
-          // TODO: ADD aria-label, alt
         >
           <div className="artwork-details">
             <div className="artwork-details-primary">{artwork.name}</div>
