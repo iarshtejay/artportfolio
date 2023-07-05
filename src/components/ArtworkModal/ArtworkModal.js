@@ -32,7 +32,7 @@ const ArtworkModal = ({ artwork, toggleArtwork }) => {
   }, []);
 
   return (
-    <div className="Artwork-modal-container" onClick={toggleArtwork}>
+    <div className="Artwork-modal-container" onClick={() => toggleArtwork()}>
       <div className="Artwork-modal">
         <div className="aspect-ratio-container">
           {!imgLoading && img && <img src={img} className="aspect-ratio-img" />}
@@ -45,7 +45,7 @@ const ArtworkModal = ({ artwork, toggleArtwork }) => {
       <img
         className="Artwork-modal-close"
         src={icons.close}
-        onClick={toggleArtwork}
+        onClick={() => toggleArtwork()}
         onKeyDown={(e) => (e.key === "Enter" ? toggleArtwork() : null)}
         aria-label="Close the modal"
         tabIndex={1}
