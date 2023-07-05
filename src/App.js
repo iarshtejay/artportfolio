@@ -3,12 +3,12 @@ import Header from "./components/Header/Header";
 import CategoryGrid from "./components/CategoryGrid/CategoryGrid";
 import ArtworkGrid from "./components/ArtworkGrid/ArtworkGrid";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import categories from "./data/categories.json";
 import { Carousel } from "./components/Carousel/Carousel";
 import { ArtworksContext } from "./contexts/ArtworksContext";
 import airtableClient from "./lib/airtable";
 import { useState, useEffect } from "react";
 import Artwork from "./components/Artwork/Artwork";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const router = createBrowserRouter([
@@ -18,17 +18,8 @@ function App() {
         <div>
           <Header />
           <Carousel />
-          <CategoryGrid isHome={true}/>
-        </div>
-      ),
-    },
-    {
-      path: "/artwork/:artworkId",
-      element: (
-        <div>
-          <Header />
-          <CategoryGrid />
-          <Artwork />
+          <CategoryGrid isHome={true} />
+          <Footer />
         </div>
       ),
     },
@@ -39,6 +30,7 @@ function App() {
           <Header />
           <CategoryGrid />
           <ArtworkGrid />
+          <Footer />
         </div>
       ),
     },
@@ -52,7 +44,6 @@ function App() {
         .get("/")
         .then((res) => {
           const records = res.data.records.map((record) => {
-
             return {
               id: record.id,
               name: record.fields.name,
