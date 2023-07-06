@@ -1,38 +1,20 @@
 import "./App.css";
-import Header from "./components/Header/Header";
-import CategoryGrid from "./components/CategoryGrid/CategoryGrid";
-import ArtworkGrid from "./components/ArtworkGrid/ArtworkGrid";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { Carousel } from "./components/Carousel/Carousel";
 import { ArtworksContext } from "./contexts/ArtworksContext";
 import airtableClient from "./lib/airtable";
 import { useState, useEffect } from "react";
-import Artwork from "./components/Artwork/Artwork";
-import Footer from "./components/Footer/Footer";
+import Home from "./views/Home";
+import Category from "./views/Category";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: (
-        <div>
-          <Header />
-          <Carousel />
-          <CategoryGrid isHome={true} />
-          <Footer />
-        </div>
-      ),
+      element: <Home />,
     },
     {
       path: "/category/:categoryName",
-      element: (
-        <div>
-          <Header />
-          <CategoryGrid />
-          <ArtworkGrid />
-          <Footer />
-        </div>
-      ),
+      element: <Category />,
     },
   ]);
   const [artworks, setArtworks] = useState([]);
